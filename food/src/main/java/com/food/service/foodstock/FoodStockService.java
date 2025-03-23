@@ -1,4 +1,4 @@
-package com.food.service.food;
+package com.food.service.foodstock;
 
 import com.food.entity.FoodStock;
 
@@ -10,4 +10,6 @@ public interface FoodStockService {
     List<FoodStock> getFoodStockOnDealerCode(Integer dealerCode);
 
     List<FoodStock> allFoodStock();
+
+    String updateSellingQty(String userId, Integer id, Integer quantity);
 }

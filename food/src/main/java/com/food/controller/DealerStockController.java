@@ -2,7 +2,7 @@ package com.food.controller;
 
 import com.food.entity.Dealer;
 import com.food.service.dealer.DealerService;
-import com.food.service.food.FoodStockService;
+import com.food.service.foodstock.FoodStockService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
