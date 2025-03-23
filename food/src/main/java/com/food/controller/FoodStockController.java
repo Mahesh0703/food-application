@@ -1,18 +1,20 @@
 package com.food.controller;
 
 import com.food.entity.FoodStock;
-import com.food.service.FoodMangementService;
+import com.food.service.food.FoodStockService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/food")
-public class FoodMangentController {
+public class FoodStockController {
 
     @Autowired
-    FoodMangementService foodMangementService;
+    FoodStockService foodMangementService;
     @GetMapping("/get-sample")
     public ResponseEntity<?> getSample(){
         return new ResponseEntity<>("Data Found", HttpStatus.FOUND);
@@ -22,5 +24,15 @@ public class FoodMangentController {
     public ResponseEntity<?> insertingFood(@RequestHeader(value = "userId",defaultValue = "unknown") String userId,@RequestBody FoodStock foodStock){
         FoodStock savedObject = foodMangementService.insertFoodStock(userId,foodStock);
         return new ResponseEntity<>(savedObject,HttpStatus.CREATED);
+    }
+    @GetMapping("/{dealerCode}")
+    public ResponseEntity<?> getFoodStockOnDealerCode(@PathVariable Integer dealerCode){
+        List<FoodStock> dealerFoodStock = foodMangementService.getFoodStockOnDealerCode(dealerCode);
+        return new ResponseEntity<>(dealerFoodStock,HttpStatus.FOUND);
+    }
+    @GetMapping("/allStock")
+    public ResponseEntity<?> allFoodStock(){
+        List<FoodStock> dealerFoodStock = foodMangementService.allFoodStock();
+        return new ResponseEntity<>(dealerFoodStock,HttpStatus.FOUND);
     }
 }
