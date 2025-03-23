@@ -24,6 +24,8 @@ public class FoodSell {
     Integer farmerId;
     @Column(name ="FOOD_FRM_NAME")
     String farmerName;
+    @Column(name = "FOOD_STOCK_ID")
+    Integer foodStockId;
     @Column(name ="FOOD_PRODUCT_NAME")
     String productName;
     @Column(name ="FOOD_QTY")

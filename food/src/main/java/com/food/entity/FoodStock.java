@@ -36,6 +36,8 @@ public class FoodStock {
     LocalDateTime foodUpdateDateTime;
     @Column(name = "FOOD_INSERTED_BY")
     String foodInsertedBy;
+    @Column(name = "FOOD_UPDATED_BY")
+    String foodUpdatedBy;
 
     @PrePersist
     public void insertionTime(){

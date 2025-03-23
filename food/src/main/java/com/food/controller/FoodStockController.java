@@ -1,7 +1,7 @@
 package com.food.controller;
 
 import com.food.entity.FoodStock;
-import com.food.service.food.FoodStockService;
+import com.food.service.foodstock.FoodStockService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -34,5 +34,13 @@ public class FoodStockController {
     public ResponseEntity<?> allFoodStock(){
         List<FoodStock> dealerFoodStock = foodMangementService.allFoodStock();
         return new ResponseEntity<>(dealerFoodStock,HttpStatus.FOUND);
+    }
+    @PutMapping("/update-sell-qty")
+    public ResponseEntity<?> updateSellQty(@RequestHeader (value = "userId",defaultValue = "unknown") String userId,
+                                           @RequestParam Integer id,@RequestParam Integer quantity){
+        String dataUpdatedStatus = foodMangementService.updateSellingQty(userId,id,quantity);
+        System.out.println("******"+dataUpdatedStatus);
+        return new ResponseEntity<>(dataUpdatedStatus,HttpStatus.OK);
+
     }
 }

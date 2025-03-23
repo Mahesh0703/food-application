@@ -15,8 +15,8 @@ public class FoodSellController {
     FoodSellSevice foodSellSevice;
 
     @PostMapping("/insert-selling-food")
-    public ResponseEntity<?> insertSellingFood(@RequestHeader(value = "userId",defaultValue = "unknown") String userId, @RequestBody FoodSell foodStock){
-        FoodSell savedSellingFood = foodSellSevice.insertSellingFood(userId,foodStock);
+    public ResponseEntity<?> insertSellingFood(@RequestHeader(value = "userId",defaultValue = "unknown") String userId, @RequestBody FoodSell foodSell){
+        FoodSell savedSellingFood = foodSellSevice.insertSellingFood(userId,foodSell);
         return new ResponseEntity<>(savedSellingFood, HttpStatus.CREATED);
     }
 }
