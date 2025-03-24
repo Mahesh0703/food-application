@@ -36,7 +36,7 @@ public class FoodSell {
     Double totalAmount;
     @Column(name ="FOOD_RECIEPT_NO")
     String recieptNo;
-    @Column(name ="FOOD_STATUS")
+    @Column(name ="FOOD_PAYMENT_STATUS")
     String paymentStatus;
     @Column(name = "FOOD_SELL_INSERTED_BY")
     String foodSellInsertedBy;
