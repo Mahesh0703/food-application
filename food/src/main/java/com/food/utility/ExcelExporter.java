@@ -73,7 +73,7 @@ public class ExcelExporter {
                 }
             }
         }
-        /*System.out.println("******"+totalSellAmount);
+        System.out.println("******"+totalSellAmount);
         System.out.println("******"+rowNum);
 
         // Add the total row at the bottom of the data
@@ -91,7 +91,7 @@ public class ExcelExporter {
         if (totalRow.getCell(5) == null) {
             totalRow.createCell(5).setCellValue(totalSellAmount.doubleValue());
         }
-*/
+
         // Apply borders to the total row
         for (int i = 0; i < 8; i++) {
             totalRow.createCell(i).setCellStyle(borderStyle);

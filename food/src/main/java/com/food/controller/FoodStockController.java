@@ -1,6 +1,7 @@
 package com.food.controller;
 
 import com.food.entity.FoodStock;
+import com.food.exception.StockNotAvailableForDealerException;
 import com.food.service.foodstock.FoodStockService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -26,7 +27,7 @@ public class FoodStockController {
         return new ResponseEntity<>(savedObject,HttpStatus.CREATED);
     }
     @GetMapping("/{dealerCode}")
-    public ResponseEntity<?> getFoodStockOnDealerCode(@PathVariable Integer dealerCode){
+    public ResponseEntity<?> getFoodStockOnDealerCode(@PathVariable Integer dealerCode) throws StockNotAvailableForDealerException {
         List<FoodStock> dealerFoodStock = foodMangementService.getFoodStockOnDealerCode(dealerCode);
         return new ResponseEntity<>(dealerFoodStock,HttpStatus.FOUND);
     }

@@ -1,6 +1,8 @@
 package com.food.service.foodstock;
 
+import com.food.constant.Constant;
 import com.food.entity.FoodStock;
+import com.food.exception.StockNotAvailableForDealerException;
 import com.food.repository.FoodStockRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,9 +24,14 @@ public class FoodStockServiceImpl implements FoodStockService {
     }
 
     @Override
-    public List<FoodStock> getFoodStockOnDealerCode(Integer dealerCode) {
+    public List<FoodStock> getFoodStockOnDealerCode(Integer dealerCode) throws StockNotAvailableForDealerException {
         List<FoodStock> dealerFoodStock = foodMangementRepository.getFoodStockOnDealerCode(dealerCode);
-        return dealerFoodStock;
+
+        if(!dealerFoodStock.isEmpty() ) {
+            return dealerFoodStock;
+        }else {
+            throw new StockNotAvailableForDealerException(Constant.NOT_AVAILABLE,Constant.DEALER_STOCK_NOT_AVAILABLE);
+        }
     }
 
     @Override
