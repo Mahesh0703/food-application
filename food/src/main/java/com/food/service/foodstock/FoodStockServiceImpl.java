@@ -5,6 +5,8 @@ import com.food.entity.FoodStock;
 import com.food.exception.StockNotAvailableForDealerException;
 import com.food.repository.FoodStockRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -35,8 +37,8 @@ public class FoodStockServiceImpl implements FoodStockService {
     }
 
     @Override
-    public List<FoodStock> allFoodStock() {
-        return foodMangementRepository.findAll();
+    public Page<FoodStock> allFoodStock(Pageable pageable) {
+        return foodMangementRepository.findAll(pageable);
     }
 
     @Override
